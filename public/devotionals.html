@@ -211,6 +211,20 @@ devotionals.forEach(d => {
   container.appendChild(div);
 });
 </script>
-
+<script>
+fetch('devotionals/devotionals.json')
+  .then(res => res.json())
+  .then(devotionals => {
+    const container = document.querySelector('.devotional-list');
+    devotionals.forEach(d => {
+      const div = document.createElement('div');
+      div.className = 'devotional-item';
+      div.innerHTML = `<a href="devotionals/${d.file}">${d.date} - "${d.title}"</a>`;
+      container.appendChild(div);
+    });
+  })
+  .catch(err => console.error('Error loading devotionals:', err));
+</script>
+  
 </body>
 </html>
