@@ -5,23 +5,84 @@
   <title>God's Oracle Today</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* Same CSS as previously provided for modern homepage */
     * { box-sizing:border-box; margin:0; padding:0; }
     body { font-family: Arial, sans-serif; background:#f4f6f8; color:#333; text-align:center; }
-    header { position: relative; background: linear-gradient(135deg, rgba(10,37,64,0.8), rgba(0,112,243,0.8)), url('hero.jpg') center/cover no-repeat; color:white; padding: 80px 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-    header img { height:80px; margin-bottom:20px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.3); }
+
+    /* Header with Hero Image + Gradient */
+    header {
+      position: relative;
+      background: linear-gradient(135deg, rgba(10,37,64,0.8), rgba(0,112,243,0.8)), url('hero.jpg') center/cover no-repeat;
+      color:white;
+      padding: 80px 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    header img {
+      height:80px;
+      margin-bottom:20px;
+      border-radius:10px;
+      box-shadow:0 4px 8px rgba(0,0,0,0.3);
+    }
     header h1 { font-size:3em; margin-bottom:10px; }
     header p { font-size:1.2em; color:#e0eaff; }
-    nav { background:white; padding:15px; text-align:center; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
-    nav a { margin:0 20px; color:#0a2540; font-weight:bold; text-decoration:none; transition: color 0.3s, transform 0.2s; }
+
+    /* Navigation */
+    nav {
+      background:white;
+      padding:15px;
+      text-align:center;
+      box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    }
+    nav a {
+      margin:0 20px;
+      color:#0a2540;
+      font-weight:bold;
+      text-decoration:none;
+      transition: color 0.3s, transform 0.2s;
+    }
     nav a:hover { color:#0070f3; transform: translateY(-2px); }
-    main { padding:60px 20px; max-width:800px; margin:0 auto; }
+
+    /* Main Section */
+    main {
+      padding:60px 20px;
+      max-width:800px;
+      margin:0 auto;
+    }
     main h2 { font-size:2.5em; margin-bottom:20px; }
     main p { font-size:1.1em; margin-bottom:30px; line-height:1.6; }
-    .btn { display:inline-block; margin-top:20px; padding:15px 30px; background:#0070f3; color:white; text-decoration:none; border-radius:8px; font-weight:bold; box-shadow:0 4px 8px rgba(0,0,0,0.2); transition: background 0.3s, transform 0.2s, box-shadow 0.2s; }
-    .btn:hover { background:#005bb5; transform: translateY(-3px); box-shadow:0 6px 12px rgba(0,0,0,0.3); }
-    footer { background: linear-gradient(135deg, #0a2540, #0070f3); color:white; padding:50px 20px; font-family: Arial, sans-serif; }
-    .footer-container { max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; gap:20px; }
+
+    .btn {
+      display:inline-block;
+      margin-top:20px;
+      padding:15px 30px;
+      background:#0070f3;
+      color:white;
+      text-decoration:none;
+      border-radius:8px;
+      font-weight:bold;
+      box-shadow:0 4px 8px rgba(0,0,0,0.2);
+      transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover {
+      background:#005bb5;
+      transform: translateY(-3px);
+      box-shadow:0 6px 12px rgba(0,0,0,0.3);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #0a2540, #0070f3);
+      color:white;
+      padding:50px 20px;
+      font-family: Arial, sans-serif;
+    }
+    .footer-container {
+      max-width:1200px;
+      margin:0 auto;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      gap:20px;
+    }
     .footer-column h3 { margin-bottom:10px; color:white; }
     .footer-column ul { list-style:none; padding:0; }
     .footer-column ul li a { color:white; text-decoration:none; transition: color 0.3s; }
@@ -29,51 +90,61 @@
     .social-icons a { font-size:22px; margin-right:10px; color:white; transition: color 0.3s; }
     .social-icons a:hover { color:#ffdd57; }
     .footer-bottom { text-align:center; margin-top:30px; font-size:14px; color:#ccc; }
-    @media(max-width:600px){ nav a { margin:0 10px; font-size:0.9em; } header h1 { font-size:2em; } main h2 { font-size:2em; } }
+
+    /* Responsive */
+    @media(max-width:600px){
+      nav a { margin:0 10px; font-size:0.9em; }
+      header h1 { font-size:2em; }
+      main h2 { font-size:2em; }
+    }
   </style>
 </head>
 <body>
 
+<!-- Header -->
 <header>
   <img src="logo.png" alt="God's Oracle Today Logo">
   <h1>God’s Oracle Today</h1>
   <p>Daily Inspiration. Divine Direction.</p>
 </header>
 
+<!-- Navigation -->
 <nav>
   <a href="index.html">Home</a>
   <a href="devotionals.html">Daily Devotionals</a>
 </nav>
 
+<!-- Main Section -->
 <main>
   <h2>Welcome</h2>
   <p>Receive daily encouragement and spiritual insight to guide your day. Explore devotionals, articles, and reflections to strengthen your faith and find inspiration in every moment.</p>
 
-  <a id="today-devotional" class="btn" href="#">Read Today’s Devotional</a>
+  <!-- Dynamic button for latest devotional -->
+  <a id="today-devotional" class="btn">Read Today’s Devotional</a>
 
-<script>
-  // Get today's date
-  const today = new Date();
-  const yyyy = today.getFullYear();
-  const mm = String(today.getMonth() + 1).padStart(2, '0'); // months are 0-indexed
-  const dd = String(today.getDate()).padStart(2, '0');
-
-  // Build the filename assuming you name your devotionals YYYY-MM-DD.html
-  const devotionalFile = `devotionals/${yyyy}-${mm}-${dd}.html`;
-
-  // Update the button
-  const btn = document.getElementById('today-devotional');
-  btn.href = devotionalFile;
-  btn.textContent = `Read Today’s Devotional (${yyyy}-${mm}-${dd})`;
-</script>
+  <script>
+  fetch('/api/list-devotionals')
+    .then(res => res.json())
+    .then(devotionals => {
+      if(devotionals.length > 0){
+        const latest = devotionals[0];
+        const btn = document.getElementById('today-devotional');
+        btn.href = `devotionals/${latest.file}`;
+        btn.textContent = `Read Today’s Devotional (${latest.title})`;
+      }
+    })
+    .catch(err => console.error('Error loading latest devotional:', err));
+  </script>
 </main>
 
+<!-- Footer -->
 <footer>
   <div class="footer-container">
     <div class="footer-column">
       <h3>About</h3>
       <p>God’s Oracle Today provides daily inspiration and guidance through devotionals, articles, and spiritual insights.</p>
     </div>
+
     <div class="footer-column">
       <h3>Quick Links</h3>
       <ul>
@@ -83,6 +154,7 @@
         <li><a href="#">Contact</a></li>
       </ul>
     </div>
+
     <div class="footer-column">
       <h3>Follow Us</h3>
       <div class="social-icons">
@@ -93,6 +165,7 @@
       </div>
     </div>
   </div>
+
   <div class="footer-bottom">
     © 2026 God’s Oracle Today. All rights reserved.
   </div>
