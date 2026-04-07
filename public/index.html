@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>God's Oracle Today</title>
+  <title>Daily Devotionals - God’s Oracle Today</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <style>
     body {
       margin: 0;
@@ -13,189 +12,224 @@
       color: #333;
     }
 
+    a {
+      text-decoration: none;
+    }
+
+    /* Header */
     header {
-      background: #1e3a8a;
+      background: linear-gradient(135deg, #0a2540, #0070f3);
       color: white;
-      padding: 20px;
+      padding: 40px 20px;
       text-align: center;
     }
 
     header h1 {
       margin: 0;
-      font-size: 28px;
+      font-size: 2.5em;
     }
 
-    .container {
-      max-width: 800px;
-      margin: 30px auto;
+    header p {
+      margin: 10px 0 0 0;
+      font-size: 1.2em;
+      color: #e0eaff;
+    }
+
+    /* Navigation */
+    nav {
+      background: white;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    nav a {
+      margin: 0 20px;
+      color: #0a2540;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #0070f3;
+    }
+
+    /* Main Section */
+    main {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    main h2 {
+      font-size: 2em;
+      margin-bottom: 40px;
+    }
+
+    .devotional-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .devotional-item {
       background: white;
       padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    .date {
-      text-align: right;
-      color: #777;
-      font-size: 14px;
-    }
-
-    .title {
-      font-size: 24px;
-      margin-top: 10px;
-      color: #1e3a8a;
-    }
-
-    .scripture {
-      font-style: italic;
-      margin: 15px 0;
-      color: #444;
-    }
-
-    .image {
+      max-width: 700px;
       width: 100%;
-      border-radius: 8px;
-      margin: 15px 0;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
     }
 
-    .message {
-      line-height: 1.6;
-      font-size: 16px;
+    .devotional-item:hover {
+      transform: translateY(-3px);
     }
 
+    .devotional-item a {
+      color: #0070f3;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .back-home {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 12px 25px;
+      background: #0070f3;
+      color: white;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .back-home:hover {
+      background: #005bb5;
+    }
+
+    /* Footer */
     footer {
+      background: linear-gradient(135deg, #0a2540, #0070f3);
+      color: white;
+      padding: 50px 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-column h3 {
+      margin-bottom: 10px;
+      color: white;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-column ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-column ul li a:hover {
+      color: #ffdd57;
+    }
+
+    .social-icons a {
+      font-size: 22px;
+      margin-right: 10px;
+      color: white;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #ffdd57;
+    }
+
+    .footer-bottom {
       text-align: center;
       margin-top: 30px;
-      padding: 15px;
       font-size: 14px;
-      color: #777;
+      color: #ccc;
     }
   </style>
 </head>
+<body>
 
-<body style="margin:0; font-family: Arial, sans-serif; background:#f4f6f8;">
-
-  <!-- Header -->
-  <header style="background:#0a2540; color:white; padding:20px; text-align:center;">
-
-  <div style="display:flex; align-items:center; justify-content:center; gap:15px;">
-    <img src="logo.png" alt="Logo" style="height:60px;">
-    <h1 style="margin:0;">God’s Oracle Today</h1>
-  </div>
-
-  <p>Daily Inspiration. Divine Direction.</p>
-
-</header>
-
-  <!-- Navigation -->
-  <nav style="background:#ffffff; padding:10px; text-align:center; box-shadow:0 2px 5px rgba(0,0,0,0.1);">
-    <a href="index.html" style="margin:0 15px; text-decoration:none; color:#0a2540;">Home</a>
-    <a href="devotionals.html" style="margin:0 15px; text-decoration:none; color:#0a2540;">Daily Devotionals</a>
-  </nav>
-
-  <!-- Main Content -->
-  <main style="padding:40px; text-align:center;">
-    <h2>Welcome</h2>
-    <p>Receive daily encouragement and spiritual insight to guide your day.</p>
-
-    <a href="daily.html" style="
-  display:inline-block;
-  margin-top:20px;
-  padding:12px 25px;
-  background:#0070f3;
-  color:white;
-  text-decoration:none;
-  border-radius:5px;">
-  Read Today’s Devotional
-</a>
-  </main>
-
+<!-- Header -->
 <header>
-  <p>Thus says the Lord</p>
+  <h1>God’s Oracle Today</h1>
+  <p>Daily Inspiration. Divine Direction.</p>
 </header>
 
-<div class="container">
-  <div class="date" id="date"></div>
+<!-- Navigation -->
+<nav>
+  <a href="index.html">Home</a>
+  <a href="devotionals.html">Daily Devotionals</a>
+</nav>
 
-  <div class="title">
-    Walking in Faith
+<!-- Main Section -->
+<main>
+  <h2>Daily Devotionals</h2>
+
+  <div class="devotional-list">
+    <div class="devotional-item">
+      <a href="daily.html">April 6, 2026 - “God’s Word for Today”</a>
+    </div>
+    <div class="devotional-item">
+      <a href="daily.html">April 5, 2026 - “Faith and Patience”</a>
+    </div>
+    <div class="devotional-item">
+      <a href="daily.html">April 4, 2026 - “Joy in the Morning”</a>
+    </div>
+    <!-- Add more devotionals here -->
   </div>
 
-  <div class="scripture">
-    “Man shall not live by bread alone, but by every word that proceedeth out of the mouth of God.” – Matthew 4:4
-  </div>
+  <a href="index.html" class="back-home">← Back to Home</a>
+</main>
 
-  <img class="image" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="Devotional Image">
-
-  <div class="message">
-    Faith is not always about seeing the full path ahead, but trusting God step by step. 
-    Even when things seem uncertain, God is working behind the scenes for your good.
-
-    <br><br>
-    Today, choose to trust Him beyond what your eyes can see. Let your faith be stronger 
-    than your fears.
-  </div>
-  
-<footer style="
-  background:#0a2540;
-  color:white;
-  text-align:center;
-  padding:15px;
-  margin-top: 40px;
-">
-  © 2026 God's Oracle Today
-</footer>
-
- </div>
-
-<footer style="
-  background: linear-gradient(135deg, #0a2540, #0070f3);
-  color:white;
-  padding:40px 20px;
-  font-family: Arial, sans-serif;
-">
-  <div style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; gap:20px;">
-
-    <!-- Column 1: About -->
-    <div style="flex:1; min-width:200px;">
-      <h3 style="color:white; margin-bottom:10px;">About</h3>
+<!-- Footer -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-column">
+      <h3>About</h3>
       <p>God’s Oracle Today provides daily inspiration and guidance through devotionals, articles, and spiritual insights.</p>
     </div>
 
-    <!-- Column 2: Quick Links -->
-    <div style="flex:1; min-width:150px;">
-      <h3 style="color:white; margin-bottom:10px;">Quick Links</h3>
-      <ul style="list-style:none; padding:0;">
-        <li><a href="index.html" style="color:white; text-decoration:none;">Home</a></li>
-        <li><a href="devotionals.html" style="color:white; text-decoration:none;">Daily Devotionals</a></li>
-        <li><a href="#" style="color:white; text-decoration:none;">About Us</a></li>
-        <li><a href="#" style="color:white; text-decoration:none;">Contact</a></li>
+    <div class="footer-column">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="devotionals.html">Daily Devotionals</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact</a></li>
       </ul>
     </div>
 
-    <!-- Column 3: Social Media -->
-    <div style="flex:1; min-width:150px;">
-      <h3 style="color:white; margin-bottom:10px;">Follow Us</h3>
-      <div style="display:flex; gap:10px;">
-        <a href="#" style="color:white; font-size:20px; text-decoration:none;">🌐</a>
-        <a href="#" style="color:white; font-size:20px; text-decoration:none;">🐦</a>
-        <a href="#" style="color:white; font-size:20px; text-decoration:none;">📘</a>
-        <a href="#" style="color:white; font-size:20px; text-decoration:none;">📸</a>
+    <div class="footer-column">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#">🌐</a>
+        <a href="#">🐦</a>
+        <a href="#">📘</a>
+        <a href="#">📸</a>
       </div>
     </div>
-
   </div>
 
-  <!-- Bottom text -->
-  <div style="text-align:center; margin-top:30px; font-size:14px; color:#ccc;">
+  <div class="footer-bottom">
     © 2026 God’s Oracle Today. All rights reserved.
   </div>
 </footer>
-  
-<script>
-  const today = new Date();
-  document.getElementById("date").innerText = today.toDateString();
-</script>
 
 </body>
 </html>
