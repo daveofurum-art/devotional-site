@@ -52,18 +52,18 @@
   <a id="today-devotional" class="btn">Read Today’s Devotional</a>
 
   <script>
-  fetch('/api/list-devotionals')
-    .then(res => res.json())
-    .then(devotionals => {
-      if(devotionals.length > 0){
-        const latest = devotionals[0];
-        const btn = document.getElementById('today-devotional');
-        btn.href = `devotionals/${latest.file}`;
-        btn.textContent = `Read Today’s Devotional (${latest.title})`;
-      }
-    })
-    .catch(err => console.error('Error loading latest devotional:', err));
-  </script>
+fetch('/api/list-devotionals')
+  .then(res => res.json())
+  .then(devotionals => {
+    if (devotionals.length > 0) {
+      const latest = devotionals[0]; // newest first
+      const btn = document.getElementById('today-devotional');
+      btn.href = `devotionals/${latest.file}`;
+      btn.textContent = `Read Today’s Devotional (${latest.title})`;
+    }
+  })
+  .catch(err => console.error('Error loading latest devotional:', err));
+</script>
 </main>
 
 <footer>
