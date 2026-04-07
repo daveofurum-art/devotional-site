@@ -5,64 +5,145 @@
   <title>Daily Devotionals - God’s Oracle Today</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { margin:0; font-family: Arial, sans-serif; background:#f4f6f8; color:#333; }
-    a { text-decoration:none; }
-    
-    /* Header */
+    /* Reset & Body */
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body { font-family: Arial, sans-serif; background: #f4f6f8; color:#333; text-align:center; }
+
+    /* Header with Hero Image + Gradient */
     header {
-      background: linear-gradient(135deg, #0a2540, #0070f3);
-      color:white; padding:40px 20px; text-align:center;
+      position: relative;
+      background: linear-gradient(135deg, rgba(10,37,64,0.8), rgba(0,112,243,0.8)), url('hero.jpg') center/cover no-repeat;
+      color: white;
+      padding: 80px 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
-    header h1 { margin:0; font-size:2.5em; }
-    header p { margin:10px 0 0 0; font-size:1.2em; color:#e0eaff; }
+
+    header img {
+      height: 80px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    header h1 { font-size: 3em; margin-bottom: 10px; }
+    header p { font-size: 1.2em; color: #e0eaff; }
 
     /* Navigation */
     nav {
-      background:white; padding:15px; text-align:center;
+      background:white;
+      padding: 15px;
+      text-align:center;
       box-shadow:0 2px 5px rgba(0,0,0,0.1);
     }
-    nav a { margin:0 20px; color:#0a2540; font-weight:bold; transition:color 0.3s; }
-    nav a:hover { color:#0070f3; }
 
-    /* Main */
-    main { padding:60px 20px; text-align:center; }
-    main h2 { font-size:2em; margin-bottom:40px; }
-
-    .devotional-list { display:flex; flex-direction:column; align-items:center; gap:20px; }
-    .devotional-item {
-      background:white; padding:20px; max-width:700px; width:100%;
-      border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.1);
-      transition: transform 0.2s;
+    nav a {
+      margin:0 20px;
+      color:#0a2540;
+      font-weight:bold;
+      text-decoration:none;
+      transition: color 0.3s, transform 0.2s;
     }
-    .devotional-item:hover { transform: translateY(-3px); }
-    .devotional-item a { color:#0070f3; font-size:1.2em; font-weight:bold; }
+
+    nav a:hover { color:#0070f3; transform: translateY(-2px); }
+
+    /* Main Section */
+    main {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    main h2 { font-size: 2.5em; margin-bottom:40px; }
+
+    .devotional-list {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      justify-items:center;
+    }
+
+    .devotional-item {
+      background:white;
+      padding:20px;
+      border-radius:8px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.15);
+      transition: transform 0.2s, box-shadow 0.2s;
+      width: 100%;
+      max-width: 350px;
+    }
+
+    .devotional-item:hover {
+      transform: translateY(-4px);
+      box-shadow:0 6px 15px rgba(0,0,0,0.25);
+    }
+
+    .devotional-item a {
+      color:#0070f3;
+      font-size:1.2em;
+      font-weight:bold;
+      text-decoration:none;
+      transition: color 0.3s;
+    }
+
+    .devotional-item a:hover { color:#005bb5; }
 
     .back-home {
-      display:inline-block; margin-top:40px; padding:12px 25px;
-      background:#0070f3; color:white; border-radius:6px; font-weight:bold;
-      transition:background 0.3s;
+      display:inline-block;
+      margin-top:40px;
+      padding:12px 30px;
+      background:#0070f3;
+      color:white;
+      border-radius:6px;
+      font-weight:bold;
+      text-decoration:none;
+      transition: background 0.3s, transform 0.2s;
     }
-    .back-home:hover { background:#005bb5; }
+
+    .back-home:hover {
+      background:#005bb5;
+      transform: translateY(-3px);
+    }
 
     /* Footer */
     footer {
-      background: linear-gradient(135deg, #0a2540, #0070f3); color:white; padding:50px 20px;
+      background: linear-gradient(135deg, #0a2540, #0070f3);
+      color:white;
+      padding:50px 20px;
       font-family: Arial, sans-serif;
     }
-    .footer-container { max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; gap:20px; }
+
+    .footer-container {
+      max-width:1200px;
+      margin:0 auto;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      gap:20px;
+    }
+
     .footer-column h3 { margin-bottom:10px; color:white; }
     .footer-column ul { list-style:none; padding:0; }
     .footer-column ul li a { color:white; text-decoration:none; transition: color 0.3s; }
     .footer-column ul li a:hover { color:#ffdd57; }
-    .social-icons a { font-size:22px; margin-right:10px; color:white; transition:color 0.3s; }
+
+    .social-icons a { font-size:22px; margin-right:10px; color:white; transition: color 0.3s; }
     .social-icons a:hover { color:#ffdd57; }
+
     .footer-bottom { text-align:center; margin-top:30px; font-size:14px; color:#ccc; }
+
+    /* Responsive */
+    @media(max-width:600px){
+      nav a { margin:0 10px; font-size:0.9em; }
+      header h1 { font-size:2em; }
+      main h2 { font-size:2em; }
+    }
   </style>
 </head>
 <body>
 
 <!-- Header -->
 <header>
+  <img src="logo.png" alt="God's Oracle Today Logo">
   <h1>God’s Oracle Today</h1>
   <p>Daily Inspiration. Divine Direction.</p>
 </header>
@@ -76,9 +157,7 @@
 <!-- Main Section -->
 <main>
   <h2>Daily Devotionals</h2>
-
   <div class="devotional-list"></div>
-
   <a href="index.html" class="back-home">← Back to Home</a>
 </main>
 
@@ -116,7 +195,7 @@
   </div>
 </footer>
 
-<!-- Dynamic Devotionals List Script -->
+<!-- Dynamic Devotionals Script -->
 <script>
 const devotionals = [
   { date: 'April 6, 2026', title: 'God’s Word for Today', file: 'devotionals/2026-04-06.html' },
