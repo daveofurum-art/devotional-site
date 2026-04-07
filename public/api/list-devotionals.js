@@ -2,10 +2,8 @@ import fs from 'fs';
 import path from 'path';
 
 export default function handler(req, res) {
-  // Path to the devotionals folder
   const devotionalsDir = path.join(process.cwd(), 'public', 'devotionals');
 
-  // Read all HTML files in the folder
   const files = fs.readdirSync(devotionalsDir)
     .filter(file => file.endsWith('.html'))
     .map(file => {
@@ -16,7 +14,7 @@ export default function handler(req, res) {
         file: file
       };
     })
-    .sort((a,b) => new Date(b.date) - new Date(a.date)); // newest first
+    .sort((a,b) => new Date(b.date) - new Date(a.date));
 
   res.status(200).json(files);
 }
