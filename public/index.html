@@ -27,47 +27,39 @@
     nav a { margin:0 20px; color:#0a2540; font-weight:bold; transition: color 0.3s, transform 0.2s; }
     nav a:hover { color:#0070f3; transform: translateY(-2px); }
 
-    /* --- Hero Quote Section --- */
-    .hero-quote {
-      position: relative;
-      width: 100%;
-      height: 350px;
-      margin: 40px 0;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
+    /* --- Main Content --- */
+    main { padding:60px 20px; max-width:800px; margin:0 auto; }
+    main h2 { font-size:2.5em; margin-bottom:20px; }
+    main p { font-size:1.1em; margin-bottom:30px; line-height:1.6; }
+
+    /* Matthew 4:4 Quote Styling */
+    .quote {
+      font-size: 1.3em;
+      color: #0070f3;
+      font-style: italic;
+      margin: 20px 0;
     }
-    .hero-quote-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 1;
-      filter: brightness(0.6);
-    }
-    .hero-quote-text {
-      position: relative;
-      z-index: 2;
-      color: #fff;
-      font-size: 1.5em;
-      max-width: 800px;
-      padding: 20px;
-    }
-    .hero-quote-text em {
+    .quote em {
       display: block;
       margin-top: 10px;
       font-size: 1em;
       color: #ffdd57;
     }
 
-    /* --- Main Content --- */
-    main { padding:60px 20px; max-width:800px; margin:0 auto; }
-    main h2 { font-size:2.5em; margin-bottom:20px; }
-    main p { font-size:1.1em; margin-bottom:30px; line-height:1.6; }
+    /* Replaceable Image Styling */
+    .replaceable-image-container {
+      margin: 30px 0;
+      text-align: center;
+    }
+    .replaceable-image {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+
+    /* Button */
     .btn {
       display:inline-block;
       margin-top:20px;
@@ -101,14 +93,12 @@
       nav a { margin:0 10px; font-size:0.9em; }
       header h1 { font-size:2em; }
       main h2 { font-size:2em; }
-      .hero-quote { height: 250px; }
-      .hero-quote-text { font-size:1.1em; padding: 10px; }
     }
   </style>
 </head>
 <body>
 
-<!-- Existing Header -->
+<!-- Header -->
 <header>
   <img src="logo.png" alt="God's Oracle Today Logo">
   <h1>God’s Oracle Today</h1>
@@ -121,20 +111,26 @@
   <a href="devotionals.html">Daily Devotionals</a>
 </nav>
 
-<!-- New Hero Quote Section -->
-<section class="hero-quote">
-  <img src="hero-quote.jpg" alt="Inspiration Image" class="hero-quote-image">
-  <div class="hero-quote-text">
-    <p>“Man shall not live by bread alone, but by every word that proceeds from the mouth of God.”</p>
-    <em>— Matthew 4:4</em>
-  </div>
-</section>
-
 <!-- Main Content -->
 <main>
+  <!-- Welcome Text -->
   <h2>Welcome</h2>
-  <p>Receive daily encouragement and spiritual insight to guide your day. Explore devotionals, articles, and reflections to strengthen your faith and find inspiration in every moment.</p>
+  <p>
+    Receive daily encouragement and spiritual insight to guide your day. Explore devotionals, articles, and reflections to strengthen your faith and find inspiration in every moment.
+  </p>
 
+  <!-- Matthew 4:4 Quote -->
+  <p class="quote">
+    “Man shall not live by bread alone, but by every word that proceeds from the mouth of God.”<br>
+    <em>— Matthew 4:4</em>
+  </p>
+
+  <!-- Replaceable Image -->
+  <div class="replaceable-image-container">
+    <img src="hero-quote.jpg" alt="Inspiration Image" class="replaceable-image">
+  </div>
+
+  <!-- Read Today's Devotional Button -->
   <a id="today-devotional" class="btn" href="#">Read Today’s Devotional</a>
 
   <script>
