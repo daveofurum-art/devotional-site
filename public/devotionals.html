@@ -212,7 +212,7 @@ devotionals.forEach(d => {
 });
 </script>
 <script>
-fetch('devotionals/devotionals.json')
+fetch('/api/list-devotionals')
   .then(res => res.json())
   .then(devotionals => {
     const container = document.querySelector('.devotional-list');
