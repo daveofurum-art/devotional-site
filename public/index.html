@@ -133,19 +133,41 @@
   <!-- Read Today's Devotional Button -->
   <a id="today-devotional" class="btn" href="#">Read Today’s Devotional</a>
 
-  <script>
-    fetch('/api/list-devotionals')
-      .then(res => res.json())
-      .then(devotionals => {
-        if(devotionals.length > 0){
-          const latest = devotionals[0]; // newest first
-          const btn = document.getElementById('today-devotional');
-          btn.href = `devotionals/${latest.file}`;
-          btn.textContent = `Read Today’s Devotional (${latest.title})`;
-        }
-      })
-      .catch(err => console.error('Error loading latest devotional:', err));
-  </script>
+ <script>
+  const btn = document.getElementById('today-devotional');
+
+  fetch('/api/list-devotionals')
+    .then(res => {
+      if (!res.ok) throw new Error('API error');
+      return res.json();
+    })
+    .then(devotionals => {
+      if (devotionals.length > 0) {
+        const latest = devotionals[0];
+
+        btn.href = `devotionals/${latest.file}`;
+        btn.textContent = `Read Today’s Devotional (${latest.title})`;
+      } else {
+        // No devotionals found
+        btn.textContent = "No Devotional Available Yet";
+        btn.href = "#";
+      }
+    })
+    .catch(err => {
+      console.error('Error loading latest devotional:', err);
+
+      // 🔥 Fallback: try today's date-based file
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const dd = String(today.getDate()).padStart(2, '0');
+
+      const fallbackFile = `devotionals/${yyyy}-${mm}-${dd}.html`;
+
+      btn.href = fallbackFile;
+      btn.textContent = "Read Today’s Devotional";
+    });
+</script>
 </main>
 
 <!-- Footer -->
