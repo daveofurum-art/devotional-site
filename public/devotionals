@@ -1,1 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Daily Devotional - April 12, 2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.6;
+      background: #f4f6f8;
+    }
+    h1 { color: #0a2540; }
+    .verse { font-style: italic; color: #0070f3; margin: 20px 0; }
+  </style>
+</head>
+<body>
 
+<h1>Daily Devotional – April 12, 2026</h1>
+
+<p class="verse">
+“Man shall not live by bread alone, but by every word that proceeds from the mouth of God.” — Matthew 4:4
+</p>
+
+<p>
+Write your devotional message here...
+</p>
+
+<br>
+<a href="../index.html">← Back to Home</a>
+
+</body>
+</html>
