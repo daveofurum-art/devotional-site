@@ -197,21 +197,6 @@
 
 <!-- Dynamic Devotionals Script -->
 <script>
-const devotionals = [
-  { date: 'April 6, 2026', title: 'God’s Word for Today', file: 'devotionals/2026-04-06.html' },
-  { date: 'April 5, 2026', title: 'Faith and Patience', file: 'devotionals/2026-04-05.html' },
-  { date: 'April 4, 2026', title: 'Joy in the Morning', file: 'devotionals/2026-04-04.html' }
-];
-
-const container = document.querySelector('.devotional-list');
-devotionals.forEach(d => {
-  const div = document.createElement('div');
-  div.className = 'devotional-item';
-  div.innerHTML = `<a href="${d.file}">${d.date} - "${d.title}"</a>`;
-  container.appendChild(div);
-});
-</script>
-<script>
 fetch('/api/list-devotionals')
   .then(res => res.json())
   .then(devotionals => {
