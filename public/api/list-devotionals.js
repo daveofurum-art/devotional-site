@@ -7,23 +7,15 @@ export default function handler(req, res) {
   const files = fs.readdirSync(devotionalsDir)
     .filter(file => file.endsWith('.html'))
     .map(file => {
-      // Extract date from filename
-      const datePart = file.replace('.html', '');
-      const dateObj = new Date(datePart);
+      const fileName = file.replace('.html', '');
 
       return {
-        date: dateObj.toLocaleDateString('en-US', {
-          month: 'long',
-          day: 'numeric',
-          year: 'numeric'
-        }),
-        rawDate: dateObj,
-        title: file.replace('.html','').replace(/-/g,' '),
+        date: fileName.replace(/-/g, ' '), // simple fallback readable text
+        title: fileName.replace(/-/g, ' '),
         file: file
       };
     })
-    .sort((a, b) => b.file.localeCompare(a.file))
-    .map(({ rawDate, ...rest }) => rest);
+    .sort((a, b) => b.file.localeCompare(a.file)); // newest first
 
   res.status(200).json(files);
 }
