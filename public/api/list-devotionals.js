@@ -22,7 +22,7 @@ export default function handler(req, res) {
         file: file
       };
     })
-    .sort((a, b) => b.rawDate - a.rawDate)
+    .sort((a, b) => b.file.localeCompare(a.file))
     .map(({ rawDate, ...rest }) => rest);
 
   res.status(200).json(files);
