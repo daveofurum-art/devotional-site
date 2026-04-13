@@ -214,10 +214,10 @@ fetch('/api/list-devotionals')
       div.className = 'devotional-item';
 
       // Extract image name from HTML file
-      const imageFile = d.file.replace('.html', '.jpg');
+      const imageFile = '/' + d.file.replace('.html', '.jpg');
 
       div.innerHTML = `
-        <a href="devotionals/${d.file}">
+        <a href="/devotionals/${d.file}">
           <img src="${imageFile}" class="devotional-image">
           <h3>${d.title}</h3>
           <p>${d.date}</p>
