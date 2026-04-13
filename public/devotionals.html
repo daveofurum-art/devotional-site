@@ -201,10 +201,23 @@ fetch('/api/list-devotionals')
   .then(res => res.json())
   .then(devotionals => {
     const container = document.querySelector('.devotional-list');
+    container.innerHTML = '';
+
     devotionals.forEach(d => {
       const div = document.createElement('div');
       div.className = 'devotional-item';
-      div.innerHTML = `<a href="devotionals/${d.file}">${d.date} - "${d.title}"</a>`;
+
+      // Extract image name from HTML file
+      const imageFile = d.file.replace('.html', '.jpg');
+
+      div.innerHTML = `
+        <a href="devotionals/${d.file}">
+          <img src="${imageFile}" class="devotional-image">
+          <h3>${d.title}</h3>
+          <p>${d.date}</p>
+        </a>
+      `;
+
       container.appendChild(div);
     });
   })
