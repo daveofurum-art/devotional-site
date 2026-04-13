@@ -1,21 +1,28 @@
+export const config = {
+  runtime: 'nodejs'
+};
+
 import fs from 'fs';
 import path from 'path';
 
 export default function handler(req, res) {
-  const devotionalsDir = path.join(process.cwd(), 'public', 'devotionals');
+  try {
+    const devotionalsDir = path.join(process.cwd(), 'public', 'devotionals');
 
-  const files = fs.readdirSync(devotionalsDir)
-    .filter(file => file.endsWith('.html'))
-    .map(file => {
-      const fileName = file.replace('.html', '');
+    const files = fs.readdirSync(devotionalsDir)
+      .filter(file => file.endsWith('.html'))
+      .map(file => ({
+        date: file.replace('.html', '').replace(/-/g, ' '),
+        title: file.replace('.html', '').replace(/-/g, ' '),
+        file
+      }))
+      .sort((a, b) => b.file.localeCompare(a.file));
 
-      return {
-        date: fileName.replace(/-/g, ' '), // simple fallback readable text
-        title: fileName.replace(/-/g, ' '),
-        file: file
-      };
-    })
-    .sort((a, b) => b.file.localeCompare(a.file)); // newest first
+    return res.status(200).json(files);
 
-  res.status(200).json(files);
+  } catch (err) {
+    return res.status(500).json({
+      error: err.message
+    });
+  }
 }
