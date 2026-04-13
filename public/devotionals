@@ -31,14 +31,6 @@
       color: #0070f3;
       margin: 20px 0;
     }
-
-    a {
-      display:inline-block;
-      margin-top:30px;
-      color:#0070f3;
-      font-weight:bold;
-      text-decoration:none;
-    }
   </style>
 </head>
 
@@ -46,8 +38,7 @@
 
 <h1>Daily Devotional – April 12, 2026</h1>
 
-<!-- 🖼️ YOUR IMAGE -->
-<img src="../images/2026-04-12.jpg" class="devotional-image">
+<img src="../2026-04-12.jpg" class="devotional-image">
 
 <p class="verse">
 “Man shall not live by bread alone...” — Matthew 4:4
@@ -57,6 +48,7 @@
 Write your devotional message here...
 </p>
 
+<br>
 <a href="../index.html">← Back to Home</a>
 
 </body>
