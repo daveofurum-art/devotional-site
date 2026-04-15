@@ -1,207 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Daily Devotionals - God’s Oracle Today</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    .devotional-image {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 10px;
+<meta charset="UTF-8">
+<title>Daily Devotionals</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family: Arial; background:#f4f6f8; text-align:center; }
+
+.devotional-list {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap:20px;
+  padding:40px;
 }
-    * { box-sizing: border-box; margin:0; padding:0; }
-    body { font-family: Arial, sans-serif; background: #f4f6f8; color:#333; text-align:center; }
 
-    /* Header with Hero Image + Gradient */
-    header {
-      position: relative;
-      background: linear-gradient(135deg, rgba(10,37,64,0.8), rgba(0,112,243,0.8)), url('hero.jpg') center/cover no-repeat;
-      color: white;
-      padding: 80px 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
+.devotional-item {
+  background:white;
+  padding:15px;
+  border-radius:8px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.2);
+}
 
-    header img {
-      height: 80px;
-      margin-bottom: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    }
+.devotional-image {
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  border-radius:8px;
+}
 
-    header h1 { font-size: 3em; margin-bottom: 10px; }
-    header p { font-size: 1.2em; color: #e0eaff; }
-
-    /* Navigation */
-    nav {
-      background:white;
-      padding: 15px;
-      text-align:center;
-      box-shadow:0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    nav a {
-      margin:0 20px;
-      color:#0a2540;
-      font-weight:bold;
-      text-decoration:none;
-      transition: color 0.3s, transform 0.2s;
-    }
-
-    nav a:hover { color:#0070f3; transform: translateY(-2px); }
-
-    /* Main Section */
-    main {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    main h2 { font-size: 2.5em; margin-bottom:40px; }
-
-    .devotional-list {
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      justify-items:center;
-    }
-
-    .devotional-item {
-      background:white;
-      padding:20px;
-      border-radius:8px;
-      box-shadow:0 2px 8px rgba(0,0,0,0.15);
-      transition: transform 0.2s, box-shadow 0.2s;
-      width: 100%;
-      max-width: 350px;
-    }
-
-    .devotional-item:hover {
-      transform: translateY(-4px);
-      box-shadow:0 6px 15px rgba(0,0,0,0.25);
-    }
-
-    .devotional-item a {
-      color:#0070f3;
-      font-size:1.2em;
-      font-weight:bold;
-      text-decoration:none;
-      transition: color 0.3s;
-    }
-
-    .devotional-item a:hover { color:#005bb5; }
-
-    .back-home {
-      display:inline-block;
-      margin-top:40px;
-      padding:12px 30px;
-      background:#0070f3;
-      color:white;
-      border-radius:6px;
-      font-weight:bold;
-      text-decoration:none;
-      transition: background 0.3s, transform 0.2s;
-    }
-
-    .back-home:hover {
-      background:#005bb5;
-      transform: translateY(-3px);
-    }
-
-    /* Footer */
-    footer {
-      background: linear-gradient(135deg, #0a2540, #0070f3);
-      color:white;
-      padding:50px 20px;
-      font-family: Arial, sans-serif;
-    }
-
-    .footer-container {
-      max-width:1200px;
-      margin:0 auto;
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:space-between;
-      gap:20px;
-    }
-
-    .footer-column h3 { margin-bottom:10px; color:white; }
-    .footer-column ul { list-style:none; padding:0; }
-    .footer-column ul li a { color:white; text-decoration:none; transition: color 0.3s; }
-    .footer-column ul li a:hover { color:#ffdd57; }
-
-    .social-icons a { font-size:22px; margin-right:10px; color:white; transition: color 0.3s; }
-    .social-icons a:hover { color:#ffdd57; }
-
-    .footer-bottom { text-align:center; margin-top:30px; font-size:14px; color:#ccc; }
-
-    /* Responsive */
-    @media(max-width:600px){
-      nav a { margin:0 10px; font-size:0.9em; }
-      header h1 { font-size:2em; }
-      main h2 { font-size:2em; }
-    }
-  </style>
+a { text-decoration:none; color:#0070f3; }
+</style>
 </head>
+
 <body>
 
-<!-- Header -->
-<header>
-  <img src="logo.png" alt="God's Oracle Today Logo">
-  <h1>God’s Oracle Today</h1>
-  <p>Daily Inspiration. Divine Direction.</p>
-</header>
+<h1>Daily Devotionals</h1>
 
-<!-- Navigation -->
-<nav>
-  <a href="index.html">Home</a>
-  <a href="devotionals.html">Daily Devotionals</a>
-</nav>
+<div class="devotional-list"></div>
 
-<!-- Main Section -->
-<main>
-  <h2>Daily Devotionals</h2>
-  <div class="devotional-list"></div>
-  <a href="index.html" class="back-home">← Back to Home</a>
-</main>
-
-<!-- Footer -->
-<footer>
-  <div class="footer-container">
-    <div class="footer-column">
-      <h3>About</h3>
-      <p>God’s Oracle Today provides daily inspiration and guidance through devotionals, articles, and spiritual insights.</p>
-    </div>
-
-    <div class="footer-column">
-      <h3>Quick Links</h3>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="devotionals.html">Daily Devotionals</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-column">
-      <h3>Follow Us</h3>
-      <div class="social-icons">
-        <a href="#">🌐</a>
-        <a href="#">🐦</a>
-        <a href="#">📘</a>
-        <a href="#">📸</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    © 2026 God’s Oracle Today. All rights reserved.
-  </div>
-</footer>
-
-<!-- Dynamic Devotionals Script -->
 <script>
 fetch('/api/list-devotionals')
   .then(res => res.json())
@@ -213,10 +51,10 @@ fetch('/api/list-devotionals')
       const div = document.createElement('div');
       div.className = 'devotional-item';
 
-      const imageFile = '/' + d.file.replace('.html', '.jpg');
+      const imageFile = d.file.replace('.html', '.jpg');
 
       div.innerHTML = `
-        <a href="/devotionals/${d.file}">
+        <a href="devotionals/${d.file}">
           <img src="${imageFile}" class="devotional-image">
           <h3>${d.title}</h3>
           <p>${d.date}</p>
@@ -225,9 +63,8 @@ fetch('/api/list-devotionals')
 
       container.appendChild(div);
     });
-  })
-  .catch(err => console.error('Error loading devotionals:', err));
+  });
 </script>
-  
+
 </body>
 </html>
