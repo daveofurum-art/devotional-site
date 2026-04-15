@@ -7,22 +7,19 @@ import path from 'path';
 
 export default function handler(req, res) {
   try {
-    const devotionalsDir = path.join(process.cwd(), 'public', 'devotionals');
+    const dir = path.join(process.cwd(), 'public', 'devotionals');
 
-    const files = fs.readdirSync(devotionalsDir)
-      .filter(file => file.endsWith('.html'))
-      .map(file => ({
-        date: file.replace('.html', '').replace(/-/g, ' '),
-        title: file.replace('.html', '').replace(/-/g, ' '),
-        file
+    const files = fs.readdirSync(dir)
+      .filter(f => /^\d{4}-\d{2}-\d{2}\.html$/.test(f))
+      .map(f => ({
+        date: f.replace('.html',''),
+        title: f.replace('.html','').replace(/-/g,' '),
+        file: f
       }))
-      .sort((a, b) => b.file.localeCompare(a.file));
+      .sort((a,b) => b.file.localeCompare(a.file));
 
-    return res.status(200).json(files);
-
-  } catch (err) {
-    return res.status(500).json({
-      error: err.message
-    });
+    res.status(200).json(files);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
   }
 }
