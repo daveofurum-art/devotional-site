@@ -1,27 +1,47 @@
-// api/list-devotionals.js
 import fs from 'fs';
 import path from 'path';
 
+// Force Node runtime (NOT Edge)
+export const config = {
+  runtime: 'nodejs'
+};
+
 export default function handler(req, res) {
   try {
-    const devotionalsDir = path.join(process.cwd(), 'public', 'devotionals');
+    // 🔴 Robust path resolution (works in Vercel)
+    const devotionalsDir = path.resolve('./public/devotionals');
+
+    // 🔍 Debug log (visible in Vercel logs)
+    console.log('Reading from:', devotionalsDir);
+
+    if (!fs.existsSync(devotionalsDir)) {
+      throw new Error('Devotionals folder not found at ' + devotionalsDir);
+    }
 
     const files = fs.readdirSync(devotionalsDir)
       .filter(file => file.endsWith('.html'))
       .map(file => {
-        const stats = fs.statSync(path.join(devotionalsDir, file));
+        const datePart = file.replace('.html', '');
+        const dateObj = new Date(datePart);
+
         return {
-          timestamp: stats.mtimeMs, // numeric timestamp for correct sorting
-          date: stats.mtime.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
-          title: file.replace('.html','').replace(/-/g,' '),
+          date: dateObj.toLocaleDateString('en-US', {
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric'
+          }),
+          title: file.replace('.html', '').replace(/-/g, ' '),
           file: file
         };
       })
-      .sort((a, b) => b.timestamp - a.timestamp); // newest first
+      .sort((a, b) => b.file.localeCompare(a.file));
 
     res.status(200).json(files);
-  } catch (err) {
-    console.error('Error reading devotionals:', err);
-    res.status(500).json({ error: 'Could not read devotionals' });
+
+  } catch (error) {
+    console.error('API ERROR:', error);
+    res.status(500).json({
+      error: error.message
+    });
   }
 }
