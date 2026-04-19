@@ -51,7 +51,7 @@ fetch('/api/devotionals.json')
       const div = document.createElement('div');
       div.className = 'devotional-item';
 
-     const imageFile = `../${d.file.replace('.html', '.jpg')}`;
+     const imageFile = `/${d.file.replace('.html', '.jpg')}`;
 
       div.innerHTML = `
         <a href="devotionals/${d.file}">
