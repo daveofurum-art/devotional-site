@@ -44,7 +44,7 @@ a { text-decoration:none; color:#0070f3; }
 fetch('/api/devotionals.json')
   .then(res => res.json())
   .then(devotionals => {
-    const container = document.querySelector('.devotional-list');
+    const container = document.querySelector('.devotional.json');
     container.innerHTML = '';
 
     devotionals.forEach(d => {
