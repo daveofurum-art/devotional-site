@@ -2,43 +2,77 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Daily Devotionals</title>
+<title>Daily Devotionals - God's Oracle Today</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <style>
 * { box-sizing:border-box; margin:0; padding:0; }
-body { font-family: Arial; background:#f4f6f8; text-align:center; }
+body { font-family: Arial, sans-serif; background:#f4f6f8; color:#333; text-align:center; }
+
+header {
+  background: linear-gradient(135deg, rgba(10,37,64,0.8), rgba(0,112,243,0.8));
+  color: white;
+  padding: 40px 20px;
+}
+header h1 { font-size: 2.5em; margin-bottom: 10px; }
+header p { font-size: 1.1em; color: #e0eaff; }
+
+nav { background:white; padding:15px; text-align:center; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+nav a { margin:0 20px; color:#0a2540; font-weight:bold; text-decoration:none; transition: color 0.3s; }
+nav a:hover { color:#0070f3; }
 
 .devotional-list {
-  display:grid;
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap:20px;
-  padding:40px;
+  gap: 20px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .devotional-item {
-  background:white;
-  padding:15px;
-  border-radius:8px;
-  box-shadow:0 2px 8px rgba(0,0,0,0.2);
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.devotional-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
 }
 
 .devotional-image {
-  width:100%;
-  height:200px;
-  object-fit:cover;
-  border-radius:8px;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
-a { text-decoration:none; color:#0070f3; }
+.devotional-info {
+  padding: 15px;
+}
+.devotional-info h3 { color: #0a2540; margin-bottom: 6px; font-size: 1.1em; }
+.devotional-info p { color: #888; font-size: 0.9em; }
+
+a { text-decoration: none; color: #0070f3; }
+
+footer { background: linear-gradient(135deg, #0a2540, #0070f3); color:white; padding:30px 20px; margin-top:40px; font-size:14px; }
 </style>
 </head>
-
 <body>
 
-<h1>Daily Devotionals</h1>
+<header>
+  <h1>Daily Devotionals</h1>
+  <p>Fresh inspiration, every day.</p>
+</header>
+
+<nav>
+  <a href="/index.html">Home</a>
+  <a href="/devotionals.html">Daily Devotionals</a>
+</nav>
 
 <div class="devotional-list"></div>
+
+<footer>© 2026 God's Oracle Today. All rights reserved.</footer>
 
 <script>
 fetch('/devotionals.json')
@@ -46,21 +80,19 @@ fetch('/devotionals.json')
   .then(devotionals => {
     const container = document.querySelector('.devotional-list');
     container.innerHTML = '';
-
     devotionals.forEach(d => {
       const div = document.createElement('div');
       div.className = 'devotional-item';
-
-     const imageFile = `/${d.file.replace('.html', '.jpg')}`;
-
+      const imageFile = `/${d.file.replace('.html', '.jpg')}`;
       div.innerHTML = `
         <a href="/devotionals/${d.file}">
           <img src="${imageFile}" class="devotional-image">
-          <h3>${d.title}</h3>
-          <p>${d.date}</p>
+          <div class="devotional-info">
+            <h3>${d.title}</h3>
+            <p>${d.date}</p>
+          </div>
         </a>
       `;
-
       container.appendChild(div);
     });
   });
