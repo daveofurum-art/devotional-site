@@ -1,22 +1,13 @@
 import fs from 'fs';
 import path from 'path';
 
-// Force Node runtime (NOT Edge)
 export const config = {
   runtime: 'nodejs'
 };
 
 export default function handler(req, res) {
   try {
-    // 🔴 Robust path resolution (works in Vercel)
-    const devotionalsDir = path.resolve('./public/devotionals');
-
-    // 🔍 Debug log (visible in Vercel logs)
-    console.log('Reading from:', devotionalsDir);
-
-    if (!fs.existsSync(devotionalsDir)) {
-      throw new Error('Devotionals folder not found at ' + devotionalsDir);
-    }
+    const devotionalsDir = path.join(process.cwd(), 'public', 'devotionals');
 
     const files = fs.readdirSync(devotionalsDir)
       .filter(file => file.endsWith('.html'))
@@ -39,9 +30,7 @@ export default function handler(req, res) {
     res.status(200).json(files);
 
   } catch (error) {
-    console.error('API ERROR:', error);
-    res.status(500).json({
-      error: error.message
-    });
+    console.error(error);
+    res.status(500).json({ error: error.message });
   }
 }
