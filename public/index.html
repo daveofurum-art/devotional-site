@@ -142,7 +142,7 @@ fetch('/devotionals.json')
     if (devotionals.length > 0) {
       const latest = devotionals[0];
 
-      btn.href = `devotionals/${latest.file}`;
+      btn.href = `/devotionals/${latest.file}`;
       btn.textContent = `Read Today’s Devotional (${latest.title})`;
     } else {
       btn.textContent = "No Devotional Available Yet";
