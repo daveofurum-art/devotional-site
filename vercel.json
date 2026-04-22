@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/list-devotionals.js": {
+      "includeFiles": "public/devotionals/**"
+    }
+  }
+}
