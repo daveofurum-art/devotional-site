@@ -136,7 +136,7 @@
  <script>
 const btn = document.getElementById('today-devotional');
 
-fetch('/api/devotionals.json')
+fetch('/devotionals.json')
   .then(res => res.json())
   .then(devotionals => {
     if (devotionals.length > 0) {
