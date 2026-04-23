@@ -83,7 +83,7 @@ fetch('/devotionals.json')
     devotionals.forEach(d => {
       const div = document.createElement('div');
       div.className = 'devotional-item';
-      const imageFile = `/${d.file.replace('.html', '.jpg')}`;
+      const imageFile = `/images/${d.file.replace('.html', '.jpg')}`;
       div.innerHTML = `
         <a href="/devotionals/${d.file}">
           <img src="${imageFile}" class="devotional-image">
