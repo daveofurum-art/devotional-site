@@ -40,22 +40,6 @@ nav a:hover { color:#0070f3; }
   transform: translateY(-4px);
   box-shadow: 0 6px 16px rgba(0,0,0,0.2);
 }
-
-.devotional-image {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-}
-
-.devotional-info {
-  padding: 15px;
-}
-.devotional-info h3 { color: #0a2540; margin-bottom: 6px; font-size: 1.1em; }
-.devotional-info p { color: #888; font-size: 0.9em; }
-
-a { text-decoration: none; color: #0070f3; }
-
-footer { background: linear-gradient(135deg, #0a2540, #0070f3); color:white; padding:30px 20px; margin-top:40px; font-size:14px; }
   .devotional-item {
   position: relative;
   cursor: pointer;
@@ -80,6 +64,22 @@ footer { background: linear-gradient(135deg, #0a2540, #0070f3); color:white; pad
 .devotional-item:hover .hover-text {
   opacity: 1;
 }
+
+.devotional-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.devotional-info {
+  padding: 15px;
+}
+.devotional-info h3 { color: #0a2540; margin-bottom: 6px; font-size: 1.1em; }
+.devotional-info p { color: #888; font-size: 0.9em; }
+
+a { text-decoration: none; color: #0070f3; }
+
+footer { background: linear-gradient(135deg, #0a2540, #0070f3); color:white; padding:30px 20px; margin-top:40px; font-size:14px; }
 </style>
 </head>
 <body>
@@ -108,9 +108,10 @@ fetch('/devotionals.json')
       const div = document.createElement('div');
       div.className = 'devotional-item';
       const imageFile = `/images/${d.file.replace('.html', '.jpg')}`;
-      div.innerHTML = `
-        <a href="/devotionals/${d.file}">
-          <img src="${imageFile}" class="devotional-image">
+     div.innerHTML = `
+  <a href="/devotionals/${d.file}">
+    <span class="hover-text">Click to read</span>
+    <img src="${imageFile}" class="devotional-image">
           <div class="devotional-info">
             <h3>${d.title}</h3>
             <p>${d.date}</p>
