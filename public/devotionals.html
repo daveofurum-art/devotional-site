@@ -56,6 +56,30 @@ nav a:hover { color:#0070f3; }
 a { text-decoration: none; color: #0070f3; }
 
 footer { background: linear-gradient(135deg, #0a2540, #0070f3); color:white; padding:30px 20px; margin-top:40px; font-size:14px; }
+  .devotional-item {
+  position: relative;
+  cursor: pointer;
+}
+
+.devotional-item .hover-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.6);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 0.9em;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.devotional-item:hover .hover-text {
+  opacity: 1;
+}
 </style>
 </head>
 <body>
