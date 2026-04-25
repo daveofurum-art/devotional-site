@@ -123,5 +123,46 @@ fetch('/devotionals.json')
   });
 </script>
 
+  <!-- Back to Top Button -->
+<button onclick="window.scrollTo({top:0, behavior:'smooth'})" id="topBtn" title="Go to top">↑ Top</button>
+
+<style>
+#topBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #0070f3;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 50px;
+  font-size: 0.9em;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  z-index: 999;
+}
+#topBtn.visible {
+  opacity: 1;
+}
+#topBtn:hover {
+  background: #005bb5;
+  transform: translateY(-3px);
+}
+</style>
+
+<script>
+const topBtn = document.getElementById('topBtn');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    topBtn.classList.add('visible');
+  } else {
+    topBtn.classList.remove('visible');
+  }
+});
+</script>
+  
 </body>
 </html>
