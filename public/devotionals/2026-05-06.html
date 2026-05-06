@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document My Word</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background: #f4f6f8; color: #333; }
+    .container { max-width: 800px; margin: 40px auto; padding: 20px; background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .tag { color: #6b3f1f; font-size: 0.9em; margin-bottom: 10px; }
+    .date { color: #888; font-size: 0.95em; margin-bottom: 20px; }
+    h1 { font-size: 2em; color: #0a2540; margin-bottom: 5px; }
+    .author { font-weight: bold; color: #6b3f1f; margin-bottom: 20px; }
+    .verse { background: #f5ead8; border-left: 4px solid #a0714f; padding: 15px 20px; margin: 20px 0; border-radius: 4px; font-style: italic; line-height: 1.6; }
+    .verse span { display: block; font-weight: bold; margin-bottom: 8px; color: #0a2540; font-style: normal; }
+    .message { line-height: 1.8; margin-bottom: 20px; font-size: 1.05em; }
+    .ToDo { background: #fff8e1; border-left: 4px solid #ffdd57; padding: 15px 20px; margin: 20px 0; border-radius: 4px; line-height: 1.8; }
+    .ToDo strong { display: block; margin-bottom: 8px; color: #0a2540; }
+    .bible-plan { color: #888; font-size: 0.9em; margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; }
+    .website { margin-top: 15px; text-align: center; }
+    .website a { color: #0070f3; font-weight: bold; }
+    .back { display: inline-block; margin: 20px; color: #0070f3; font-weight: bold; text-decoration: none; }
+    .back:hover { text-decoration: underline; }
+    img { width: 100%; border-radius: 12px; margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+
+<a href="/devotionals.html" class="back">← Back to Devotionals</a>
+  <!-- Audio Controls -->
+<div id="audio-controls" style="text-align:center; margin: 10px 20px;">
+  <button onclick="startReading()" id="listenBtn" style="background:#0070f3; color:white; border:none; padding:12px 24px; border-radius:50px; font-size:1em; font-weight:bold; cursor:pointer; margin:5px; box-shadow:0 4px 8px rgba(0,0,0,0.2);">
+    ▶ Listen
+  </button>
+  <button onclick="pauseReading()" id="pauseBtn" style="background:#888; color:white; border:none; padding:12px 24px; border-radius:50px; font-size:1em; font-weight:bold; cursor:pointer; margin:5px; display:none;">
+    ⏸ Pause
+  </button>
+  <button onclick="stopReading()" id="stopBtn" style="background:#e74c3c; color:white; border:none; padding:12px 24px; border-radius:50px; font-size:1em; font-weight:bold; cursor:pointer; margin:5px; display:none;">
+    ⏹ Stop
+  </button>
+</div>
+
+<script>
+let utterance = null;
+let paused = false;
+
+function getDevotionalText() {
+  const container = document.querySelector('.container');
+  return container ? container.innerText : document.body.innerText;
+}
+
+function startReading() {
+  if (paused && utterance) {
+    window.speechSynthesis.resume();
+    paused = false;
+    document.getElementById('listenBtn').style.display = 'none';
+    document.getElementById('pauseBtn').style.display = 'inline-block';
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+  utterance = new SpeechSynthesisUtterance(getDevotionalText());
+  utterance.rate = 0.95;
+  utterance.pitch = 1;
+  utterance.lang = 'en-US';
+
+  utterance.onstart = () => {
+    document.getElementById('listenBtn').style.display = 'none';
+    document.getElementById('pauseBtn').style.display = 'inline-block';
+    document.getElementById('stopBtn').style.display = 'inline-block';
+  };
+
+  utterance.onend = () => {
+    document.getElementById('listenBtn').style.display = 'inline-block';
+    document.getElementById('pauseBtn').style.display = 'none';
+    document.getElementById('stopBtn').style.display = 'none';
+    paused = false;
+  };
+
+  window.speechSynthesis.speak(utterance);
+}
+
+function pauseReading() {
+  if (window.speechSynthesis.speaking) {
+    window.speechSynthesis.pause();
+    paused = true;
+    document.getElementById('listenBtn').style.display = 'inline-block';
+    document.getElementById('pauseBtn').style.display = 'none';
+  }
+}
+
+function stopReading() {
+  window.speechSynthesis.cancel();
+  paused = false;
+  document.getElementById('listenBtn').style.display = 'inline-block';
+  document.getElementById('pauseBtn').style.display = 'none';
+  document.getElementById('stopBtn').style.display = 'none';
+}
+</script>
+
+<div class="container">
+  <p class="tag">#GodsOracleToday #GOT</p>
+  <p class="date">Wednesday, May 06, 2026</p>
+  <h1>Document My Word</h1>
+  <p class="author">Pastor David Ofurum</p>
+
+  <img src="/images/2026-05-06.jpg" alt="Document My Word">
+
+  <div class="verse">
+    <span>Exodus 34:27 KJV</span>
+    And the LORD said unto Moses, Write thou these words: for after the tenor of these words I have made a covenant with thee and with Israel.
+  </div>
+
+  <p class="message">
+    <strong>THUS SAYS THE LORD:</strong>
+    Practice documenting any word I speak that you know in your spirit is directed to you, whether I spoke directly into your spirit, in a dream, or vision, a prophecy, through a sermon, a devotional, or other means. This will aid your remembrance, reference, and prayer, both before and after the word is fulfilled.
+  <p/>
+    
+  <div class="ToDo">
+    <strong>TO DO:</strong>
+    PRAY: Holy Spirit, please help me always to remember to write down Your precious words to me. As I so treasure the seed of Your words to me, teach me to water them with prayer and, by them, to fight a good warfare until I become all that Your word has said of me in Jesus’ name. Amen.
+  </div>
+    
+  <p class="bible-plan">📖 The Bible in 90/180 days: 1Kings 15 - 2Kings 6 / 1Corinthians 7 – 13 on your digital audio Bible.</p>
+  <p class="website"><a href="https://www.godsoracletoday.com">www.godsoracletoday.com</a></p>
+</div>
+</div>
+
+</body>
+</html>
