@@ -29,6 +29,77 @@
 
 <a href="/devotionals.html" class="back">← Back to Devotionals</a>
 
+  <!-- Audio Controls -->
+<div id="audio-controls" style="text-align:center; margin: 10px 20px;">
+  <button onclick="startReading()" id="listenBtn" style="background:#0070f3; color:white; border:none; padding:12px 24px; border-radius:50px; font-size:1em; font-weight:bold; cursor:pointer; margin:5px; box-shadow:0 4px 8px rgba(0,0,0,0.2);">
+    ▶ Listen
+  </button>
+  <button onclick="pauseReading()" id="pauseBtn" style="background:#888; color:white; border:none; padding:12px 24px; border-radius:50px; font-size:1em; font-weight:bold; cursor:pointer; margin:5px; display:none;">
+    ⏸ Pause
+  </button>
+  <button onclick="stopReading()" id="stopBtn" style="background:#e74c3c; color:white; border:none; padding:12px 24px; border-radius:50px; font-size:1em; font-weight:bold; cursor:pointer; margin:5px; display:none;">
+    ⏹ Stop
+  </button>
+</div>
+
+<script>
+let utterance = null;
+let paused = false;
+
+function getDevotionalText() {
+  const container = document.querySelector('.container');
+  return container ? container.innerText : document.body.innerText;
+}
+
+function startReading() {
+  if (paused && utterance) {
+    window.speechSynthesis.resume();
+    paused = false;
+    document.getElementById('listenBtn').style.display = 'none';
+    document.getElementById('pauseBtn').style.display = 'inline-block';
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+  utterance = new SpeechSynthesisUtterance(getDevotionalText());
+  utterance.rate = 0.95;
+  utterance.pitch = 1;
+  utterance.lang = 'en-US';
+
+  utterance.onstart = () => {
+    document.getElementById('listenBtn').style.display = 'none';
+    document.getElementById('pauseBtn').style.display = 'inline-block';
+    document.getElementById('stopBtn').style.display = 'inline-block';
+  };
+
+  utterance.onend = () => {
+    document.getElementById('listenBtn').style.display = 'inline-block';
+    document.getElementById('pauseBtn').style.display = 'none';
+    document.getElementById('stopBtn').style.display = 'none';
+    paused = false;
+  };
+
+  window.speechSynthesis.speak(utterance);
+}
+
+function pauseReading() {
+  if (window.speechSynthesis.speaking) {
+    window.speechSynthesis.pause();
+    paused = true;
+    document.getElementById('listenBtn').style.display = 'inline-block';
+    document.getElementById('pauseBtn').style.display = 'none';
+  }
+}
+
+function stopReading() {
+  window.speechSynthesis.cancel();
+  paused = false;
+  document.getElementById('listenBtn').style.display = 'inline-block';
+  document.getElementById('pauseBtn').style.display = 'none';
+  document.getElementById('stopBtn').style.display = 'none';
+}
+</script>
+
 <div class="container">
   <p class="tag">#GodsOracleToday #GOT</p>
   <p class="date">Thursday, April 09, 2026</p>
