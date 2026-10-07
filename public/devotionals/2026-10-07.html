@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Maturity First</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background: #f4f6f8; color: #333; }
+    .container { max-width: 800px; margin: 40px auto; padding: 20px; background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .tag { color: #6b3f1f; font-size: 0.9em; margin-bottom: 10px; }
+    .date { color: #888; font-size: 0.95em; margin-bottom: 20px; }
+    h1 { font-size: 2em; color: #0a2540; margin-bottom: 5px; }
+    .author { font-weight: bold; color: #6b3f1f; margin-bottom: 20px; }
+    .verse { background: #f5ead8; border-left: 4px solid #a0714f; padding: 15px 20px; margin: 20px 0; border-radius: 4px; font-style: italic; line-height: 1.6; }
+    .verse span { display: block; font-weight: bold; margin-bottom: 8px; color: #0a2540; font-style: normal; }
+    .message { line-height: 1.8; margin-bottom: 20px; font-size: 1.05em; }
+    .ToDo { background: #fff8e1; border-left: 4px solid #ffdd57; padding: 15px 20px; margin: 20px 0; border-radius: 4px; line-height: 1.8; }
+    .ToDo strong { display: block; margin-bottom: 8px; color: #0a2540; }
+    .bible-plan { color: #888; font-size: 0.9em; margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; }
+    .website { margin-top: 15px; text-align: center; }
+    .website a { color: #0070f3; font-weight: bold; }
+    .back { display: inline-block; margin: 20px; color: #0070f3; font-weight: bold; text-decoration: none; }
+    .back:hover { text-decoration: underline; }
+    img { width: 100%; border-radius: 12px; margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+
+<a href="/devotionals.html" class="back">← Back to Devotionals</a>
+  <!-- Audio Controls -->
+<div id="audio-controls" style="text-align:center; margin: 10px 20px;">
+  <button onclick="startReading()" id="listenBtn" style="background:#0070f3; color:white; border:none; padding:12px 24px; border-radius:50px; font-size:1em; font-weight:bold; cursor:pointer; margin:5px; box-shadow:0 4px 8px rgba(0,0,0,0.2);">
+    ▶ Listen
+  </button>
+  <button onclick="pauseReading()" id="pauseBtn" style="background:#888; color:white; border:none; padding:12px 24px; border-radius:50px; font-size:1em; font-weight:bold; cursor:pointer; margin:5px; display:none;">
+    ⏸ Pause
+  </button>
+  <button onclick="stopReading()" id="stopBtn" style="background:#e74c3c; color:white; border:none; padding:12px 24px; border-radius:50px; font-size:1em; font-weight:bold; cursor:pointer; margin:5px; display:none;">
+    ⏹ Stop
+  </button>
+</div>
+
+<script>
+let utterance = null;
+let paused = false;
+
+function getDevotionalText() {
+  const container = document.querySelector('.container');
+  return container ? container.innerText : document.body.innerText;
+}
+
+function startReading() {
+  if (paused && utterance) {
+    window.speechSynthesis.resume();
+    paused = false;
+    document.getElementById('listenBtn').style.display = 'none';
+    document.getElementById('pauseBtn').style.display = 'inline-block';
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+  utterance = new SpeechSynthesisUtterance(getDevotionalText());
+  utterance.rate = 0.95;
+  utterance.pitch = 1;
+  utterance.lang = 'en-US';
+
+  utterance.onstart = () => {
+    document.getElementById('listenBtn').style.display = 'none';
+    document.getElementById('pauseBtn').style.display = 'inline-block';
+    document.getElementById('stopBtn').style.display = 'inline-block';
+  };
+
+  utterance.onend = () => {
+    document.getElementById('listenBtn').style.display = 'inline-block';
+    document.getElementById('pauseBtn').style.display = 'none';
+    document.getElementById('stopBtn').style.display = 'none';
+    paused = false;
+  };
+
+  window.speechSynthesis.speak(utterance);
+}
+
+function pauseReading() {
+  if (window.speechSynthesis.speaking) {
+    window.speechSynthesis.pause();
+    paused = true;
+    document.getElementById('listenBtn').style.display = 'inline-block';
+    document.getElementById('pauseBtn').style.display = 'none';
+  }
+}
+
+function stopReading() {
+  window.speechSynthesis.cancel();
+  paused = false;
+  document.getElementById('listenBtn').style.display = 'inline-block';
+  document.getElementById('pauseBtn').style.display = 'none';
+  document.getElementById('stopBtn').style.display = 'none';
+}
+</script>
+
+<div class="container">
+  <p class="tag">#GodsOracleToday #GOT</p>
+  <p class="date">Wednesday, October 07, 2026</p>
+  <h1>Maturity First</h1>
+  <p class="author">Pastor David Ofurum</p>
+
+  <img src="/images/2026-10-07.jpg" alt="Maturity First">
+
+  <div class="verse">
+    <span> 1 Timothy 3:6 KJV </span>
+Not a novice, lest being lifted up with pride he fall into the condemnation of the devil.
+  </div>
+
+  <p class="message">
+    <strong>THUS SAYS THE LORD:</strong>
+Ministry is not for the spiritually immature but for persons who have depth in Me. Pride is one major indicator of immaturity. If your anointing or accomplishments puff up your heart, you’re not ripe for ministry yet; otherwise, you will fall in Lucifer style. Anointing without humility is immaturity and will lead to destruction.
+  <p/>
+    
+  <div class="ToDo">
+    <strong>TO DO:</strong>
+PRAY: Search my heart, O Lord. Find and uproot any trace of pride in me. Purge me of self-conceit and self-aggrandizement. Keep me remembering that I am nothing and can achieve nothing without You. Teach me to always glorify You, not myself, for Your ability at work in me, in Jesus’ name. Amen.
+  </div>
+    
+  <p class="bible-plan">📖 The Bible in 90/180 days: James 1 - 2Peter 3 / Micah 5 – Nahum 3 on your digital audio Bible.</p>
+  <p class="website"><a href="https://www.godsoracletoday.com">www.godsoracletoday.com</a></p>
+</div>
+</div>
+
+</body>
+</html>
